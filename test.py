@@ -25,14 +25,16 @@ from matplotlib import pyplot as plt
 X_train = X_train.reshape(X_train.shape[0], 1, 28, 28)
 X_test = X_test.reshape(X_test.shape[0], 1, 28, 28)
 # 将输入的维度重构成指定为度
+# (1层，28行，28列)
 # print(X_train.shape)
 
 X_train = X_train.astype('float32')
 X_test = X_test.astype('float32')
+# 数据类型转换
 X_train /= 255
 X_test /= 255
 # X_train = X_train / 255
-# 将0~255缩放至0~1区间
+# 数值归一化处理，将0~255缩放至0~1区间
 
 # print(y_train.shape)
 # print(y_train[:10])
