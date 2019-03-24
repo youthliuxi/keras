@@ -1,10 +1,11 @@
+# -*- coding:utf-8 -*-
 import os
 # os.system("activate keras")
 # os.system("python test.py > test.txt")
 # print("over")
 # 
 batch_sizes = [16,32,64,128]
-optimizers = ["SGD","RMSprop","Adagrad","Adadelta","Adam","Adamax","Nadam","TFOptimizer"]
+optimizers = ["SGD","RMSprop","Adagrad","Adadelta","Adam","Adamax","Nadam"]
 for optimizer in optimizers:
 	for batch_size in batch_sizes:
 		fp_name = "try_first/%s_%d.py" % (optimizer, batch_size)
@@ -54,4 +55,3 @@ for optimizer in optimizers:
 		fp_txt = "%s/txt/%s_%d.txt" % (file_path,optimizer, batch_size)
 		os.system("python %s > %s" % (fp_py,fp_txt))
 
-os.system("shutdown -h")

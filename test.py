@@ -11,7 +11,7 @@ from keras.utils import np_utils
 from keras.datasets import mnist
 
 # 将打乱的mnist数据集载入训练集和测试集中
-(X_train, y_train), (X_test, y_test) = mnist.load_data()
+# (X_train, y_train), (X_test, y_test) = mnist.load_data()
 # print(X_train.shape)
 import pylab
 from matplotlib import pyplot as plt
@@ -22,6 +22,10 @@ from matplotlib import pyplot as plt
 # pylab.show()
 
 # print(X_train[0])
+path = "./mnist.npz"
+f = np.load(path)
+X_train, y_train = f['x_train'],f['y_train']
+X_test, y_test = f['x_test'],f['y_test']
 X_train = X_train.reshape(X_train.shape[0], 1, 28, 28)
 X_test = X_test.reshape(X_test.shape[0], 1, 28, 28)
 # 将输入的维度重构成指定为度
