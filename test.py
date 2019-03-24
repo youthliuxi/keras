@@ -51,6 +51,7 @@ model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(1,28,28)))
 # (None, 32, 26, 26)
 
 model.add(Conv2D(32, (3, 3), activation='relu'))
+model.add(Conv2D(32, (3, 3), activation='relu'))
 # Conv2D，二维卷积层
 # padding参数，补0策略，valid大小可以不同；same大小相同
 model.add(MaxPooling2D(pool_size=(2,2)))
@@ -72,14 +73,15 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'])
 # 配置学习过程：loss损失函数，optimizer优化器，metrics评估标准
 model.fit(X_train, Y_train, 
-          batch_size=32, nb_epoch=2, verbose=1, validation_data=(X_test, Y_test))
+          batch_size=32, nb_epoch=2, verbose=2, validation_data=(X_test, Y_test))
 # nb_epoch参数，所有样本的训练次数
 # verbose，日志显示，0为不显示，1为显示进度条记录，2为每个epochs输出一行记录
 # valiation_split，切割输入数据的一定比例作为验证集，0~1浮点数
 # validation_data=(X_test, Y_test)，验证数据，计算loss
 # 
-score = model.evaluate(X_test, Y_test, batch_size=32)
-print(score)
+score = model.evaluate(X_test, Y_test, verbose=0, batch_size=32)
+print(score[0])
+print(score[1])
 # 运行结果展示：
 # Using TensorFlow backend.
 # WARNING:tensorflow:From D:\Anaconda3\envs\keras\lib\site-packages\tensorflow\python\framework\op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
