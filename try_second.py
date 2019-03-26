@@ -23,7 +23,7 @@ from keras.models import Sequential
 from keras.utils import np_utils
 from keras.datasets import mnist
 # (X_train, y_train), (X_test, y_test) = mnist.load_data()
-path = "../mnist.npz"
+path = "./mnist.npz"
 f = np.load(path)
 X_train, y_train = f['x_train'],f['y_train']
 X_test, y_test = f['x_test'],f['y_test']
