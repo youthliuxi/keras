@@ -63,3 +63,5 @@ for optimizer in optimizers:
 os.system("git add *")
 os.system("git commit -am \"update with second try\"")
 os.system("git push origin master")
+
+os.system("shutdown -h")
