@@ -34,7 +34,7 @@ model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(10, activation='softmax'))
 model.compile(loss='categorical_crossentropy',optimizer='SGD',metrics=['accuracy'])
-hist = model.fit(X_train, Y_train, batch_size=16, nb_epoch=100, verbose=2, validation_data=(X_test, Y_test))
+hist = model.fit(X_train, Y_train, batch_size=16, nb_epoch=100, verbose=1, validation_data=(X_test, Y_test))
 log_file_name = "try_second/txt/SGD_glorot_normal_16.txt"
 with open(log_file_name,'w') as f:
 	f.write(str(hist.history))
