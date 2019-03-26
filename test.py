@@ -15,7 +15,6 @@ from keras.datasets import mnist
 # print(X_train.shape)
 import pylab
 from matplotlib import pyplot as plt
-
 # plt.figure()
 # plt.imshow(X_train[0])
 # plt.axis('off') # 不显示坐标轴  
@@ -49,7 +48,7 @@ Y_test = np_utils.to_categorical(y_test, 10)
 	
 model = Sequential()
 # 新建模型
-model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(1,28,28)))
+model.add(Conv2D(32, (3, 3), activation='relu', init='uniform', input_shape=(1,28,28)))
 # 往模型里添加层
 # print(model.output_shape)
 # (None, 32, 26, 26)
@@ -76,13 +75,15 @@ model.compile(loss='categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
 # 配置学习过程：loss损失函数，optimizer优化器，metrics评估标准
-model.fit(X_train, Y_train, 
-          batch_size=32, nb_epoch=2, verbose=2, validation_data=(X_test, Y_test))
+hist = model.fit(X_train, Y_train, 
+          batch_size=32, nb_epoch=10, verbose=1, validation_data=(X_test, Y_test))
 # nb_epoch参数，所有样本的训练次数
 # verbose，日志显示，0为不显示，1为显示进度条记录，2为每个epochs输出一行记录
 # valiation_split，切割输入数据的一定比例作为验证集，0~1浮点数
 # validation_data=(X_test, Y_test)，验证数据，计算loss
-# 
+log_file_name = "test.txt"
+with open(log_file_name,'w') as f:
+	f.write(str(hist.history))
 score = model.evaluate(X_test, Y_test, verbose=0, batch_size=32)
 print(score[0])
 print(score[1])
