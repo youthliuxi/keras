@@ -60,4 +60,6 @@ for optimizer in optimizers:
 			fp_py = "%s/%s_%s_%d.py" % (file_path,optimizer,init_mode,batch_size)
 			os.system("python %s" % (fp_py))
 
-os.system("")
+os.system("git add *")
+os.system("git commit -am \"update with second try\"")
+os.system("git push orgin master")
