@@ -11,7 +11,7 @@ optimizers = ["SGD","RMSprop","Adagrad","Adadelta","Adam","Adamax","Nadam"]
 for optimizer in optimizers:
 	for init_mode in init_modes:
 		for batch_size in batch_sizes:
-			fp_name = "%s/%s_%s_%d.py" % (file_path, init_mode, optimizer, batch_size)
+			fp_name = "%s/%s-%s-%d.py" % (file_path, init_mode, optimizer, batch_size)
 			fp=open(fp_name, "w")
 			pre_code = '''# -*- coding:utf-8 -*-
 from keras import backend as K
@@ -63,7 +63,7 @@ with open(log_file_name,'w') as f:
 for optimizer in optimizers:
 	for init_mode in init_modes:
 		for batch_size in batch_sizes:
-			fp_py = "%s/%s_%s_%d.py" % (file_path,init_mode,optimizer,batch_size)
+			fp_py = "%s/%s-%s-%d.py" % (file_path,init_mode,optimizer,batch_size)
 			os.system("python %s" % (fp_py))
 
 os.system("git add *")
