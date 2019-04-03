@@ -50,13 +50,13 @@ model.add(Dropout(0.5))
 model.add(Dense(10, activation='softmax'))
 model.compile(loss='categorical_crossentropy',optimizer='%s',metrics=['accuracy'])
 hist = model.fit(X_train, Y_train, batch_size=%d, nb_epoch=100, verbose=1, validation_data=(X_test, Y_test))
-log_file_name = "%s/txt/%s_%s_%d.txt"
+log_file_name = "%s/txt/%s-%s-%d.txt"
 with open(log_file_name,'w') as f:
 	f.write(str(hist.history))
 # score = model.evaluate(X_test, Y_test, verbose=0, batch_size=%d)
 # print(score[0])
 # print(score[1])
-''' % (init_mode,optimizer,batch_size,file_path,optimizer,init_mode,batch_size,batch_size)
+''' % (init_mode,optimizer,batch_size,file_path,init_mode,optimizer,batch_size,batch_size)
 			fp.write(pre_code)
 			fp.close()
 
@@ -69,3 +69,5 @@ for optimizer in optimizers:
 os.system("git add *")
 os.system("git commit -am \"update with second try\"")
 os.system("git push origin master")
+
+os.system("shutdown -h")
