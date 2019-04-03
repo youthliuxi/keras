@@ -108,3 +108,6 @@ print(score)
 # 10000/10000 [==============================] - 5s 547us/step
 # [0.04147695766454563, 0.985]
 ```
+
+#### try_first and try_second
+&emsp;&emsp;几个超参数调整，生成测试文件，然后分别运行并保存loss和acc，分别绘制曲线，保存在try_second/picture里。
