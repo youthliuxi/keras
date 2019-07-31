@@ -35,7 +35,7 @@ model.add(Dropout(0.5))
 model.add(Dense(10, activation='softmax'))
 model.compile(loss='categorical_crossentropy',optimizer='Adadelta',metrics=['accuracy'])
 hist = model.fit(X_train, Y_train, batch_size=16, nb_epoch=100, verbose=1, validation_data=(X_test, Y_test))
-log_file_name = "try_second/txt/Adadelta_lecun_uniform_16.txt"
+log_file_name = "try_second/txt/lecun_uniform-Adadelta-16.txt"
 with open(log_file_name,'w') as f:
 	f.write(str(hist.history))
 # score = model.evaluate(X_test, Y_test, verbose=0, batch_size=16)

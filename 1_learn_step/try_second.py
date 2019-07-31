@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 import os
+import time
+time_start=time.time()
 # os.system("activate keras")
 # os.system("python test.py > test.txt")
 # print("over")
@@ -65,9 +67,9 @@ for optimizer in optimizers:
 		for batch_size in batch_sizes:
 			fp_py = "%s/%s-%s-%d.py" % (file_path,init_mode,optimizer,batch_size)
 			os.system("python %s" % (fp_py))
+time_end=time.time()
+f =  open("try_secomd/time.txt",'w')
+f.write(str(time_start)+'\n')
+f.write(str(time_end)+'\n')
+f.write(str(time_end-time_start)+'\n')
 
-os.system("git add *")
-os.system("git commit -am \"update with second try\"")
-os.system("git push origin master")
-
-os.system("shutdown -h")

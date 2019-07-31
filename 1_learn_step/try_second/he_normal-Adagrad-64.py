@@ -35,7 +35,7 @@ model.add(Dropout(0.5))
 model.add(Dense(10, activation='softmax'))
 model.compile(loss='categorical_crossentropy',optimizer='Adagrad',metrics=['accuracy'])
 hist = model.fit(X_train, Y_train, batch_size=64, nb_epoch=100, verbose=1, validation_data=(X_test, Y_test))
-log_file_name = "try_second/txt/Adagrad_he_normal_64.txt"
+log_file_name = "try_second/txt/he_normal-Adagrad-64.txt"
 with open(log_file_name,'w') as f:
 	f.write(str(hist.history))
 # score = model.evaluate(X_test, Y_test, verbose=0, batch_size=64)
