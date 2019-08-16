@@ -46,8 +46,8 @@ def drawPlt(path_index,data,jpgName):
 	plt.close()
 
 def main():
-	path_index = "try_second"
-	path = "try_second\\txt"
+	path_index = "try_third"
+	path = "try_third\\txt"
 	text = os.listdir(path)
 	for text_name in text:
 		# print(text_name)
