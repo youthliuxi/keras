@@ -7,7 +7,7 @@ time_start=time.time()
 # print("over")
 # 
 file_path = "try_third"
-batch_sizes = [2048,1024,512,256]
+batch_sizes = [4096,2048,1024,512,256]
 init_modes = ['uniform', 'lecun_uniform', 'normal', 'zero', 'glorot_normal', 'glorot_uniform', 'he_normal', 'he_uniform']
 optimizers = ["SGD","RMSprop","Adagrad","Adadelta","Adam","Adamax","Nadam"]
 for optimizer in optimizers:
@@ -45,13 +45,13 @@ model = Sequential()
 model.add(Conv2D(32, (3, 3), activation='relu',init = '%s', input_shape=(1,28,28)))
 model.add(Conv2D(32, (3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2,2)))
-model.add(Dropout(0.25))
+model.add(Dropout(1 -0.25))
 model.add(Flatten())
 model.add(Dense(128, activation='relu'))
-model.add(Dropout(0.5))
+model.add(Dropout(1 - 0.5))
 model.add(Dense(10, activation='softmax'))
 model.compile(loss='categorical_crossentropy',optimizer='%s',metrics=['accuracy'])
-hist = model.fit(X_train, Y_train, batch_size=%d, nb_epoch=100, verbose=1, validation_data=(X_test, Y_test))
+hist = model.fit(X_train, Y_train, batch_size=%d, epochs=100, verbose=1, validation_data=(X_test, Y_test))
 log_file_name = "%s/txt/%s-%s-%d.txt"
 with open(log_file_name,'w') as f:
 	f.write(str(hist.history))
