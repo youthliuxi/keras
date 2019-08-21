@@ -27,8 +27,8 @@ def drawPlt_batch_size(optimizer, init_mode, batch_sizes, data):
 		plt.title(data_str[i])
 	# plt.show()
 	jpgName = '%s-%s' % (optimizer, init_mode)
-	plt.savefig("picture\\batch_size\\%s.png" % (jpgName))
-	print("picture\\batch_size\\%s.png" % (jpgName))
+	plt.savefig("picture/batch_size/%s.png" % (jpgName))
+	print("picture/batch_size/%s.png" % (jpgName))
 	plt.close()
 
 def drawPlt_optimizer(batch_size, init_mode, optimizers, data):
@@ -44,8 +44,8 @@ def drawPlt_optimizer(batch_size, init_mode, optimizers, data):
 		plt.title(data_str[i])
 	# plt.show()
 	jpgName = '%s-%s' % (init_mode, batch_size)
-	plt.savefig("picture\\optimizer\\%s.png" % (jpgName))
-	print("picture\\optimizer\\%s.png" % (jpgName))
+	plt.savefig("picture/optimizer/%s.png" % (jpgName))
+	print("picture/optimizer/%s.png" % (jpgName))
 	plt.close()
 
 def drawPlt_init_mode(optimizer, batch_size, init_modes, data):
@@ -61,12 +61,12 @@ def drawPlt_init_mode(optimizer, batch_size, init_modes, data):
 		plt.title(data_str[i])
 	# plt.show()
 	jpgName = '%s-%s' % (batch_size, optimizer)
-	plt.savefig("picture\\init_mode\\%s.png" % (jpgName))
-	print("picture\\init_mode\\%s.png" % (jpgName))
+	plt.savefig("picture/init_mode/%s.png" % (jpgName))
+	print("picture/init_mode/%s.png" % (jpgName))
 	plt.close()
 
 def main():
-	batch_sizes = [16,32,64,128,256,512,1024,2048]
+	batch_sizes = [16,32,64,128,256,512,1024,2048,4096]
 	init_modes = ['uniform', 'lecun_uniform', 'normal', 'zero', 'glorot_normal', 'glorot_uniform', 'he_normal', 'he_uniform']
 	optimizers = ["SGD","RMSprop","Adagrad","Adadelta","Adam","Adamax","Nadam"]
 
@@ -82,7 +82,7 @@ def main():
 			
 			# print(data[1024]['acc'][-1])
 			# print(data.keys())
-			# drawPlt_batch_size(optimizer, init_mode, batch_sizes, data)
+			drawPlt_batch_size(optimizer, init_mode, batch_sizes, data)
 	for batch_size in batch_sizes:
 		for init_mode in init_modes:
 			data = {}
@@ -92,7 +92,7 @@ def main():
 					file_txt = re.sub('\'','\"',file_txt)
 					file_txt_data = json.loads(file_txt)
 					data[optimizer] = file_txt_data
-			# drawPlt_optimizer(batch_size, init_mode, optimizers, data)
+			drawPlt_optimizer(batch_size, init_mode, optimizers, data)
 
 	for optimizer in optimizers:
 		for batch_size in batch_sizes:
